@@ -50,7 +50,9 @@ async def roll(context):
 @client.command(name='cookie',
                 description='Gives a person a cookie',
                 brief='Gives a cookie', pass_context=True)
-async def cookie(context, name):
-    await client.say(context.message.author.mention + ' gave a cookie to ' + str(name))
+async def cookie(context, message : str):
+    await client.say(context.message.author.mention + ' gave a cookie to ' + str(message))
+
+
 # Activates the bot
 client.run(TOKEN)
