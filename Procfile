@@ -1,1 +1,1 @@
-web: python BotA.py
+web: python BotA.py runserver 0.0.0.0:5000
