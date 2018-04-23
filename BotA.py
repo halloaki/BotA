@@ -2,7 +2,7 @@ from discord.ext.commands import Bot
 import random
 
 # Constants
-BOT_PREFIX = ("bota ", "[]")
+BOT_PREFIX = "bota "
 TOKEN = "NDI2ODU5ODE1MDM4NDg0NDkx.Db-xUg.TpMfUJucYXucACa3cai_h779ZJc"
 client = Bot(command_prefix=BOT_PREFIX)
 
@@ -58,7 +58,7 @@ async def cookie(context, message: str):
                 description="The bot will say something in your place",
                 brief='bot says something', pass_context=True)
 async def say(context, message: str):
-     await client.say(str(message))
+     await client.say(context.message.content[8:])
      await client.delete_message(context.message)
 
 # Activates the bot
