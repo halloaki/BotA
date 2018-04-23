@@ -58,8 +58,21 @@ async def cookie(context, message: str):
                 description="The bot will say something in your place",
                 brief='bot says something', pass_context=True)
 async def say(context, message: str):
-     await client.say(context.message.content[8:])
-     await client.delete_message(context.message)
+    await client.say(context.message.content[8:])
+    await client.delete_message(context.message)
+
+
+@client.command(name="water", description="The bot may give you some water, or not.",
+                brief='bot distributes water', pass_context=True)
+async def water(context):
+    phrases = [
+        ' here is some water my friend! <:water:438082707688259584>',
+        ' sorry we don\'t have water for everybody today...',
+        ' sorry maybe the shaman will make it rain tomorrow...',
+        ' The well has dried up!'
+    ]
+    await client.say(context.message.author.mention + random.choice(phrases))
+
 
 # Activates the bot
 
