@@ -59,7 +59,7 @@ async def cookie(context, message: str):
                 brief='bot says something', pass_context=True)
 async def say(context, message: str):
      await client.say(str(message))
-     await client.delete_message(message)
+     await client.delete_message(context.message)
 
 # Activates the bot
 
