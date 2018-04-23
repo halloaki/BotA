@@ -66,7 +66,8 @@ async def say(context, message: str):
                 brief='bot distributes water', pass_context=True)
 async def water(context):
     phrases = [
-        ' here is some water my friend! <:water:438082707688259584>',
+        ' The shaman made it rain, hopefully it isn\'t acid rain like last time',
+        ' You manage to scavenge water in the back of Miraz home <:water:438082707688259584>',
         ' sorry we don\'t have water for everybody today...',
         ' sorry maybe the shaman will make it rain tomorrow...',
         ' The well has dried up!'
