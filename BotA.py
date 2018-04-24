@@ -10,7 +10,6 @@ startup_extensions = ["member"]
 
 # Commands
 
-
 @client.event
 async def on_ready():
     print('Logged in as')
@@ -18,14 +17,6 @@ async def on_ready():
     print(client.user.id)
     print('------')
 
-# Unloads extensions
-
-@client.command()
-async def unload(extension_name: str):
-    """Unloads an extension."""
-    client.unload_extension(extension_name)
-    await client.say("{} unloaded.".format(extension_name))
-    
 # Load in the extensions?
 if __name__ == "__main__":
     for extension in startup_extensions:
