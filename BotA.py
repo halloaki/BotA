@@ -57,7 +57,7 @@ async def cookie(context, message: str):
 @client.command(name='say',
                 description="The bot will say something in your place",
                 brief='bot says something', pass_context=True)
-async def say(context, message: str):
+async def say(context):
     await client.say(context.message.content[8:])
     await client.delete_message(context.message)
 
@@ -85,7 +85,7 @@ async def roulette(ctx):
         "💀Everyone looked with fear in their eyes as they could see " +
         str(ctx.message.author) + " brains over the wall.💀",
         str(ctx.message.author) +
-        " head exploded like a ripe tomato, leaving a terrible mess.",
+        " head exploded like a ripe tomato, leaving a terrible mess for the others to clean.",
     ]
     possibleLives = [
         "While " + str(ctx.message.author) +
