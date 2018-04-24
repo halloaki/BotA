@@ -6,97 +6,34 @@ import const
 BOT_PREFIX = const.BOT_PREFIX
 TOKEN = const.TOKEN
 client = Bot(command_prefix=BOT_PREFIX)
+startup_extensions = ["member"]
 
 # Commands
 
 
-@client.command(name='8ball',
-                description="Might answer a yes/no question.",
-                brief="Answers a yes or no question.",
-                aliases=['eight_ball', 'eightball', '8-ball'],
-                pass_context=True)
-async def eight_ball(context):
-    possible_responses = [
-        'Doesn\'t look like it',
-        'Probably not',
-        'I can only see so far in the future',
-        'It is likely',
-        'Perhaps',
-        'If I say yes, will you leave me alone?',
-        'Yes, no, maybe...',
-        'Do I look like a magical ball that tells the future? Oh wait...',
-        'Yes',
-        'No',
-    ]
-    await client.say(random.choice(possible_responses)+', ' + context.message.author.mention)
+@client.event
+async def on_ready():
+    print('Logged in as')
+    print(client.user.name)
+    print(client.user.id)
+    print('------')
 
+# Unloads extensions
 
-@client.command(name='roll',
-                description="rolls a dice (between 1 and 6)",
-                brief="rolls a dice",
-                aliases=['dice'],
-                pass_context=True)
-async def roll(context):
-    possible_numbers = [
-        ':one:',
-        ':two:',
-        ':three:',
-        ':four:',
-        ':five:',
-        ':six:',
-    ]
-    await client.say(context.message.author.mention + ' rolled a ' + random.choice(possible_numbers))
-
-
-@client.command(name='cookie',
-                description='Gives a person a cookie',
-                brief='Gives a cookie', pass_context=True)
-async def cookie(context, message: str):
-    await client.say(context.message.author.mention + ' gave a cookie to ' + str(message))
-
-
-@client.command(name='say',
-                description="The bot will say something in your place",
-                brief='bot says something', pass_context=True)
-async def say(context):
-    await client.say(context.message.content[8:])
-    await client.delete_message(context.message)
-
-
-@client.command(name="water", description="The bot may give you some water, or not.",
-                brief='bot distributes water', pass_context=True)
-async def water(context):
-    phrases = [
-        ' The shaman made it rain, hopefully it isn\'t acid rain like last time',
-        ' You manage to scavenge water in the back of Miraz home <:water:438082707688259584>',
-        ' sorry we don\'t have water for everybody today...',
-        ' sorry maybe the shaman will make it rain tomorrow...',
-        ' The well has dried up!'
-    ]
-    await client.say(context.message.author.mention + random.choice(phrases))
-
-
-@client.command(name="roulette",
-                description="You load a revolver with 1 bullet in the 6 slots, you spin the roulette and hope you don't get the bullet",
-                brief="play the roulette", pass_context=True)
-async def roulette(ctx):
-    randomNumber = random.randint(1, 6)
-    message = ""
-    possibleDeaths = [
-        "💀Everyone looked with fear in their eyes as they could see " +
-        str(ctx.message.author) + " brains over the wall.💀",
-        str(ctx.message.author) +
-        " head exploded like a ripe tomato, leaving a terrible mess for the others to clean.",
-    ]
-    possibleLives = [
-        "While " + str(ctx.message.author) +
-        " was peeing their pants in the fear of death, they heard a clicking noice. It seems that they were lucky this time...",
-    ]
-    if(randomNumber == 6):
-        message = random.choice(possibleDeaths)
-    else:
-        message = random.choice(possibleLives)
-    await client.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. they pointed the gun towards their head and pulled the trigger.\n \n" + message)
+@client.command()
+async def unload(extension_name: str):
+    """Unloads an extension."""
+    client.unload_extension(extension_name)
+    await client.say("{} unloaded.".format(extension_name))
+    
+# Load in the extensions?
+if __name__ == "__main__":
+    for extension in startup_extensions:
+        try:
+            client.load_extension(extension)
+        except Exception as e:
+            exc = '{}: {}'.format(type(e).__name__, e)
+            print('Failed to load extension {}\n{}'.format(extension, exc))
 # Activates the bot
 
 client.run(TOKEN)
