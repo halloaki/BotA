@@ -91,12 +91,11 @@ async def roulette(ctx):
         "While " + str(ctx.message.author) +
         " was peeing his pants in the fear of death, he heard a clicking noice. It seems that he was lucky this time...",
     ]
-    await client.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. He pointed the gun towards his head and pulled the trigger.")
     if(randomNumber == 6):
         message = random.choice(possibleDeaths)
     else:
         message = random.choice(possibleLives)
-    await client.say(message)
+    await client.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. He pointed the gun towards his head and pulled the trigger.\n" + message)
 # Activates the bot
 
 client.run(TOKEN)
