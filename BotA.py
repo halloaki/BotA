@@ -81,12 +81,21 @@ async def water(context):
 async def roulette(ctx):
     randomNumber = random.randint(1, 6)
     message = ""
+    possibleDeaths = [
+        "💀Everyone looked with fear in their eyes as they could see " +
+        str(ctx.message.author) + " brains over the wall.💀",
+        str(ctx.message.author) +
+        " head exploded like a ripe tomato, leaving a terrible mess.",
+    ]
+    possibleLives = [
+        "While " + str(ctx.message.author) +
+        " was peeing his pants in the fear of death, he heard a clicking noice. It seems that he was lucky this time...",
+    ]
     await client.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. He pointed the gun towards his head and pulled the trigger.")
     if(randomNumber == 6):
-        message = "💀Everyone looked with fear in their eyes as they could see " + str(ctx.message.author) + " brains over the wall.💀"
+        message = random.choice(possibleDeaths)
     else:
-        message = "While " + str(ctx.message.author) + \
-            " was peeing his pants in the fear of death, he heard a clicking noice. It seems that he was lucky this time..."
+        message = random.choice(possibleLives)
     await client.say(message)
 # Activates the bot
 
