@@ -1,9 +1,10 @@
 from discord.ext.commands import Bot
 import random
+import const
 
 # Constants
-BOT_PREFIX = "bota "
-TOKEN = "NDI2ODU5ODE1MDM4NDg0NDkx.Db-xUg.TpMfUJucYXucACa3cai_h779ZJc"
+BOT_PREFIX = const.BOT_PREFIX
+TOKEN = const.TOKEN
 client = Bot(command_prefix=BOT_PREFIX)
 
 # Commands
