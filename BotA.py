@@ -74,7 +74,12 @@ async def water(context):
     ]
     await client.say(context.message.author.mention + random.choice(phrases))
 
-
+@client.command(name="roulette",
+description = "You load a revolver with 1 bullet in the 6 slots, you spin the roulette and hope you don't get the bullet",
+brief = "play the roulette", pass_context = True)
+async def roulette(ctx):
+    randomNumber = random.randint(1,6)
+    await client.say
 # Activates the bot
 
 client.run(TOKEN)
