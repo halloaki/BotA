@@ -83,9 +83,9 @@ async def roulette(ctx):
     message = ""
     await client.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. He pointed the gun towards his head and pulled the trigger.")
     if(randomNumber == 6):
-        message = "💀Everyone looked with fear in their eyes as they could see " + ctx.message.author + " brains over the wall.💀"
+        message = "💀Everyone looked with fear in their eyes as they could see " + str(ctx.message.author) + " brains over the wall.💀"
     else:
-        message = "While " + ctx.message.author + \
+        message = "While " + str(ctx.message.author) + \
             " was peeing his pants in the fear of death, he heard a clicking noice. It seems that he was lucky this time..."
     await client.say(message)
 # Activates the bot
