@@ -95,7 +95,7 @@ async def roulette(ctx):
         message = random.choice(possibleDeaths)
     else:
         message = random.choice(possibleLives)
-    await client.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. He pointed the gun towards his head and pulled the trigger.\n" + message)
+    await client.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. He pointed the gun towards his head and pulled the trigger.\n \n" + message)
 # Activates the bot
 
 client.run(TOKEN)
