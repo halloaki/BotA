@@ -6,11 +6,6 @@ class Members():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def joined(self, member: discord.Member):
-        """Says when a member joined."""
-        await self.bot.say('{0.name} joined in {0.joined_at}'.format(member))
-
     @commands.command(name='8ball',
                     description="Might answer a yes/no question.",
                     brief="Answers a yes or no question.",
