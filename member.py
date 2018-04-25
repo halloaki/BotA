@@ -49,8 +49,10 @@ class Members():
     async def cookie(self, context):
         content = context.message.content[12:]
         message = content.split(" ")
-        if message[0].lower() == "":
+        if message[0] == "":
             await self.bot.say("You have to give the cookie to someone")
+        elif message[0].lower() == "bota":
+            await self.bot.say(":heart: Thank you :heart:")
         elif message[0].lower() in str(context.message.author).lower():
             await self.bot.say("You can't give a cookie to yourself!")
         else:
