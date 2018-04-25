@@ -51,7 +51,12 @@ class Members():
                     description='Gives a person a cookie',
                     brief='Gives a cookie', pass_context=True)
     async def cookie(self,context, message: str):
-        await self.bot.say(context.message.author.mention + ' gave a cookie to ' + str(message))
+        if message != None:
+            await self.bot.say(context.message.author.mention + ' gave a cookie to ' + str(message))
+        elif message in str(context.message.author):
+            await self.bot.say("You can't give a cookie to yourself!")
+        else:
+            await self.bot.say("Please put someones name in front of the command \n Example: bota cookie @Bota")
 
     @commands.command(name='say',
                     description="The bot will say something in your place",
