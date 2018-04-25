@@ -69,13 +69,13 @@ class Members():
                       brief='bot distributes water', pass_context=True)
     async def water(self, context):
         phrases = [
-            ' The shaman made it rain, hopefully it isn\'t acid rain like last time',
-            ' You manage to scavenge water in the back of Miraz home <:water:438082707688259584>',
-            ' sorry we don\'t have water for everybody today...',
-            ' sorry maybe the shaman will make it rain tomorrow...',
-            ' The well has dried up!'
+            'the shaman made it rain, hopefully it isn\'t acid rain like last time',
+            'you manage to scavenge water in the back of Miraz home <:water:438082707688259584>',
+            'sorry we don\'t have water for everybody today...',
+            'sorry maybe the shaman will make it rain tomorrow...',
+            'the well has dried up!'
         ]
-        await self.bot.say(context.message.author.mention + random.choice(phrases))
+        await self.bot.say(context.message.author.mention+ ", " + random.choice(phrases))
 
     @commands.command(name="roulette",
                       description="You load a revolver with 1 bullet in the 6 slots, you spin the roulette and hope you don't get the bullet",
