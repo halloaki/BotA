@@ -2,16 +2,17 @@ import discord
 from discord.ext import commands
 import random
 
+
 class Members():
     def __init__(self, bot):
         self.bot = bot
 
     @commands.command(name='8ball',
-                    description="Might answer a yes/no question.",
-                    brief="Answers a yes or no question.",
-                    aliases=['eight_ball', 'eightball', '8-ball'],
-                    pass_context=True)
-    async def eight_ball(self,context):
+                      description="Might answer a yes/no question.",
+                      brief="Answers a yes or no question.",
+                      aliases=['eight_ball', 'eightball', '8-ball'],
+                      pass_context=True)
+    async def eight_ball(self, context):
         possible_responses = [
             'Doesn\'t look like it',
             'Probably not',
@@ -27,11 +28,11 @@ class Members():
         await self.bot.say(random.choice(possible_responses)+', ' + context.message.author.mention)
 
     @commands.command(name='roll',
-                    description="rolls a dice (between 1 and 6)",
-                    brief="rolls a dice",
-                    aliases=['dice'],
-                    pass_context=True)
-    async def roll(self,context):
+                      description="rolls a dice (between 1 and 6)",
+                      brief="rolls a dice",
+                      aliases=['dice'],
+                      pass_context=True)
+    async def roll(self, context):
         possible_numbers = [
             ':one:',
             ':two:',
@@ -43,26 +44,29 @@ class Members():
         await self.bot.client.say(context.message.author.mention + ' rolled a ' + random.choice(possible_numbers))
 
     @commands.command(name='cookie',
-                    description='Gives a person a cookie',
-                    brief='Gives a cookie', pass_context=True)
-    async def cookie(self,context, message: str):
-        if message != None:
-            await self.bot.say(context.message.author.mention + ' gave a cookie to ' + str(message))
-        elif message in str(context.message.author):
-            await self.bot.say("You can't give a cookie to yourself!")
-        else:
+                      description='Gives a person a cookie',
+                      brief='Gives a cookie', pass_context=True)
+    async def cookie(self, context, message: str):
+        try:
+            if message != None:
+                await self.bot.say(context.message.author.mention + ' gave a cookie to ' + str(message))
+            elif message in str(context.message.author):
+                await self.bot.say("You can't give a cookie to yourself!")
+            else:
+                await self.bot.say("Please put someones name in front of the command \n Example: bota cookie @Bota")
+        except:
             await self.bot.say("Please put someones name in front of the command \n Example: bota cookie @Bota")
 
     @commands.command(name='say',
-                    description="The bot will say something in your place",
-                    brief='bot says something', pass_context=True)
-    async def say(self,context):
+                      description="The bot will say something in your place",
+                      brief='bot says something', pass_context=True)
+    async def say(self, context):
         await self.bot.say(context.message.content[8:])
         await self.bot.delete_message(context.message)
 
     @commands.command(name="water", description="The bot may give you some water, or not.",
-                    brief='bot distributes water', pass_context=True)
-    async def water(self,context):
+                      brief='bot distributes water', pass_context=True)
+    async def water(self, context):
         phrases = [
             ' The shaman made it rain, hopefully it isn\'t acid rain like last time',
             ' You manage to scavenge water in the back of Miraz home <:water:438082707688259584>',
@@ -73,9 +77,9 @@ class Members():
         await self.bot.say(context.message.author.mention + random.choice(phrases))
 
     @commands.command(name="roulette",
-                    description="You load a revolver with 1 bullet in the 6 slots, you spin the roulette and hope you don't get the bullet",
-                    brief="play the roulette", pass_context=True)
-    async def roulette(self,ctx):
+                      description="You load a revolver with 1 bullet in the 6 slots, you spin the roulette and hope you don't get the bullet",
+                      brief="play the roulette", pass_context=True)
+    async def roulette(self, ctx):
         randomNumber = random.randint(1, 6)
         message = ""
         possibleDeaths = [
