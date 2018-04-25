@@ -53,7 +53,7 @@ class Members():
             await self.bot.say("You have to give the cookie to someone")
         elif message[0].lower() == "bota":
             await self.bot.say(":heart: Thank you :heart:")
-        elif str(message[0]).lower() in str(context.message.author.mention).lower():
+        elif str(message[0]).lower() in str(context.message.author.mention).lower() or str(message[0]).lower() in str(context.message.author).lower():
             await self.bot.say("You can't give a cookie to yourself!")
         else:
             await self.bot.say(context.message.author.mention + ' gave a cookie to ' + str(message[0]))
