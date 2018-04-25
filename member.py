@@ -80,24 +80,24 @@ class Members():
     @commands.command(name="roulette",
                       description="You load a revolver with 1 bullet in the 6 slots, you spin the roulette and hope you don't get the bullet",
                       brief="play the roulette", pass_context=True)
-    async def roulette(self, ctx):
+    async def roulette(self, context):
         randomNumber = random.randint(1, 6)
         message = ""
         possibleDeaths = [
             "💀Everyone looked with fear in their eyes as they could see " +
-            str(ctx.message.author) + " brains over the wall.💀",
-            str(ctx.message.author) +
+            str(context.message.author) + " brains over the wall.💀",
+            str(context.message.author) +
             " head exploded like a ripe tomato, leaving a terrible mess for the others to clean.",
         ]
         possibleLives = [
-            "While " + str(ctx.message.author) +
+            "While " + str(context.message.author) +
             " was peeing their pants in the fear of death, they heard a clicking noice. It seems that they were lucky this time...",
         ]
         if(randomNumber == 6):
             message = random.choice(possibleDeaths)
         else:
             message = random.choice(possibleLives)
-        await self.bot.say(ctx.message.author.mention + " loaded the first bullet into the chamber and spinned it. they pointed the gun towards their head and pulled the trigger.\n \n" + message)
+        await self.bot.say(context.message.author.mention + " loaded the first bullet into the chamber and spinned it. they pointed the gun towards their head and pulled the trigger.\n \n" + message)
 
 
 def setup(bot):
