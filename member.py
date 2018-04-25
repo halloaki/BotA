@@ -48,7 +48,7 @@ class Members():
                       brief='Gives a cookie', pass_context=True)
     async def cookie(self, context, message: str):
 
-        if message in str(context.message.author):
+        if message.lower() in str(context.message.author).lower():
             await self.bot.say("You can't give a cookie to yourself!")
         elif message != None:
             await self.bot.say(context.message.author.mention + ' gave a cookie to ' + str(message))
