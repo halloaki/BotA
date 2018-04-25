@@ -46,11 +46,14 @@ class Members():
     @commands.command(name='cookie',
                       description='Gives a person a cookie',
                       brief='Gives a cookie', pass_context=True)
-    async def cookie(self, context, message: str):
-
-        if message.lower() in str(context.message.author).lower():
+    async def cookie(self, context):
+        content = context.message.content[12:]
+        message = content.split(" ")
+        if message[0].lower() == "":
+            await self.bot.say("You have to give the cookie to someone")
+        elif message[0].lower() in str(context.message.author).lower():
             await self.bot.say("You can't give a cookie to yourself!")
-        elif message != None:
+        else:
             await self.bot.say(context.message.author.mention + ' gave a cookie to ' + str(message))
 
     @commands.command(name='say',
