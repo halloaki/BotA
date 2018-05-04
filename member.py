@@ -61,6 +61,7 @@ class Members():
     @commands.command(name='say',
                       description="The bot will say something in your place",
                       brief='bot says something', pass_context=True)
+    @commands.has_permissions(manage_messages=True)
     async def say(self, context):
         await self.bot.say(context.message.content[8:])
         await self.bot.delete_message(context.message)
