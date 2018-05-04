@@ -1,1 +1,1 @@
-worker: python BotA.py
+web: node index.js
