@@ -1,2 +1,9 @@
+import os
+from boto.s3.connection import S3Connection
 BOT_PREFIX = "bota "
-TOKEN = "NDI2ODU5ODE1MDM4NDg0NDkx.Db-xUg.TpMfUJucYXucACa3cai_h779ZJc"
+
+def index():
+    TOKEN = str(os.environ.get('TOKEN'))
+    return TOKEN
+
+TOKEN = index()

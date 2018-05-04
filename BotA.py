@@ -25,6 +25,6 @@ if __name__ == "__main__":
         except Exception as e:
             exc = '{}: {}'.format(type(e).__name__, e)
             print('Failed to load extension {}\n{}'.format(extension, exc))
-# Activates the bot
 
-client.run(TOKEN)
+# Activates the bot
+client.run(const.TOKEN)
